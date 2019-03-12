@@ -22,6 +22,17 @@ class App extends Component {
       .then(this.setError);
   };
 
+  addFriends = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:5000/friends",
+      data: {
+        firstName: "Fred",
+        lastName: "Flintstone"
+      }
+    });
+  };
+
   setFriend = friend => {
     this.stopLoader();
     this.setState({ friend });
@@ -67,7 +78,14 @@ class App extends Component {
                   </div>
                 ))}
               </div>
-
+              <div>
+                <form>
+                  <input />
+                  <input />
+                  <input />
+                  <button onSubmit={this.addFriends}>Add Friends!</button>
+                </form>
+              </div>
               <button onClick={this.fetchFriends}>fetch again</button>
             </div>
           )}
